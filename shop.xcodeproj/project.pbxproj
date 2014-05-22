@@ -64,6 +64,8 @@
 		7858601E1907FF600028133A /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 785860161907FF600028133A /* SBJsonBase.m */; };
 		7858601F1907FF600028133A /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 785860181907FF600028133A /* SBJsonParser.m */; };
 		785860201907FF600028133A /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7858601A1907FF600028133A /* SBJsonWriter.m */; };
+		78B2F3F8192E497E0076497D /* Notice_iphone.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B2F3F7192E497E0076497D /* Notice_iphone.m */; };
+		78B2F3FB192E4AAE0076497D /* NoticeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B2F3FA192E4AAE0076497D /* NoticeModel.m */; };
 		78F0061B190D09A8001C5778 /* Helps_iphone.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F0061A190D09A8001C5778 /* Helps_iphone.m */; };
 		CB21F0F317A139B6005C1B5D /* ServerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = CB21F0F117A139B6005C1B5D /* ServerConfig.m */; };
 		CB3775C517C5FF6F00DF5F21 /* accsessory-arrow-down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB3774DD17C5FF6E00DF5F21 /* accsessory-arrow-down@2x.png */; };
@@ -729,6 +731,10 @@
 		785860181907FF600028133A /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
 		785860191907FF600028133A /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		7858601A1907FF600028133A /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		78B2F3F6192E497E0076497D /* Notice_iphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notice_iphone.h; sourceTree = "<group>"; };
+		78B2F3F7192E497E0076497D /* Notice_iphone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notice_iphone.m; sourceTree = "<group>"; };
+		78B2F3F9192E4AAE0076497D /* NoticeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeModel.h; sourceTree = "<group>"; };
+		78B2F3FA192E4AAE0076497D /* NoticeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeModel.m; sourceTree = "<group>"; };
 		78F00619190D09A8001C5778 /* Helps_iphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helps_iphone.h; sourceTree = "<group>"; };
 		78F0061A190D09A8001C5778 /* Helps_iphone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helps_iphone.m; sourceTree = "<group>"; };
 		CB21F0F017A139B6005C1B5D /* ServerConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerConfig.h; sourceTree = "<group>"; };
@@ -1758,6 +1764,8 @@
 				630236E0177C1675004C052D /* SearchKeywordsModel.m */,
 				630236E1177C1675004C052D /* SearchModel.h */,
 				630236E2177C1675004C052D /* SearchModel.m */,
+				78B2F3F9192E4AAE0076497D /* NoticeModel.h */,
+				78B2F3FA192E4AAE0076497D /* NoticeModel.m */,
 				630236E5177C1675004C052D /* UserModel.h */,
 				630236E6177C1675004C052D /* UserModel.m */,
 				630236E7177C1675004C052D /* ValidateModel.h */,
@@ -2198,6 +2206,8 @@
 				E909CBE5182D0D650095B262 /* SettingBoard_iPhone.m */,
 				78F00619190D09A8001C5778 /* Helps_iphone.h */,
 				78F0061A190D09A8001C5778 /* Helps_iphone.m */,
+				78B2F3F6192E497E0076497D /* Notice_iphone.h */,
+				78B2F3F7192E497E0076497D /* Notice_iphone.m */,
 				E909CBE6182D0D650095B262 /* ShareBoard_iPhone.h */,
 				E909CBE7182D0D650095B262 /* ShareBoard_iPhone.m */,
 				E909CBE8182D0D650095B262 /* ShippedBoard_iPhone.h */,
@@ -3736,6 +3746,7 @@
 				E970D7A3182CE4E200146363 /* CXMLElement_ElementTreeExtensions.m in Sources */,
 				63023917177C1676004C052D /* BannerModel.m in Sources */,
 				E970D730182CE4E200146363 /* Bee_UITemplateManager.m in Sources */,
+				78B2F3F8192E497E0076497D /* Notice_iphone.m in Sources */,
 				E970D700182CE4E200146363 /* Bee_UIFootLoader.m in Sources */,
 				E909CC11182D0D650095B262 /* CollectionBoard_iPhone.m in Sources */,
 				E970D716182CE4E200146363 /* UILabel+BeeUILayout.m in Sources */,
@@ -3996,6 +4007,7 @@
 				E970D76B182CE4E200146363 /* NSObject+BeeJSON.mm in Sources */,
 				E970D7AB182CE4E200146363 /* unzip.c in Sources */,
 				E970D703182CE4E200146363 /* Bee_UITipsView.m in Sources */,
+				78B2F3FB192E4AAE0076497D /* NoticeModel.m in Sources */,
 				E970D751182CE4E200146363 /* Bee_ActiveRecord.m in Sources */,
 				E970D686182CE4E200146363 /* Bee_Package.mm in Sources */,
 				E970D780182CE4E200146363 /* Bee_HTTPRequest2.m in Sources */,

@@ -112,7 +112,6 @@ DEF_SIGNAL( SIGN_OUT )
 
 - (void)unload
 {
-    [[ConfigModel sharedInstance] removeObserver:self];
     
 	[_pic1 release];
 	[_pic2 release];

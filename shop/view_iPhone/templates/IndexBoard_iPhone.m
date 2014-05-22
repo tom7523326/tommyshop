@@ -35,6 +35,7 @@
 
 #import "CommonFootLoader.h"
 #import "CommonPullLoader.h"
+#import "Notice_iphone.h"
 
 #pragma mark -
 
@@ -677,7 +678,9 @@ ON_SIGNAL3( IndexNotifiBarItem_iPhone, notify, signal )
 {
     if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE ] )
     {
-        [self.stack pushBoard:[NotificationBoard_iPhone board] animated:YES];
+        //修改添加通知代码
+//          [self.stack pushBoard:[NotificationBoard_iPhone board] animated:YES]
+         [self.stack pushBoard:[Notice_iphone board] animated:YES];
     }
 }
 

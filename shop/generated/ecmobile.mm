@@ -1164,6 +1164,46 @@ DEF_MESSAGE_( config, msg )
 	}
 }
 
+
+DEF_MESSAGE_( notice, msg )
+{
+	if ( msg.sending )
+	{
+        //先注释配置信息的请求
+        
+        //		NSString * requestURI = @"http://shop.ecmobile.me/ecmobile/?url=config";
+		NSString * requestURI = [NSString stringWithFormat:@"%@interface/shopNotice.php", [ServerConfig sharedInstance].url];
+		
+		msg.HTTP_POST( requestURI );
+	}
+	else if ( msg.succeed )
+	{
+		NSDictionary * response = msg.responseJSONDictionary;
+		NSDictionary * content = [response dictAtPath:@"data"];
+		STATUS * status = [STATUS objectFromDictionary:[response dictAtPath:@"status"]];
+        
+		if ( nil == content)
+		{
+			msg.failed = YES;
+			return;
+		}
+		if ( nil == status || NO == [status isKindOfClass:[STATUS class]] )
+		{
+			msg.failed = YES;
+			return;
+		}
+        
+		msg.OUTPUT( @"content", content);
+		msg.OUTPUT( @"status", status );
+        
+	}
+	else if ( msg.failed )
+	{
+	}
+	else if ( msg.cancelled )
+	{
+	}
+}
 #pragma mark - POST flow/checkOrder
 
 DEF_MESSAGE_( flow_checkOrder, msg )

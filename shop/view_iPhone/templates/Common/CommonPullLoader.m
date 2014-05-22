@@ -47,6 +47,8 @@
     $(@"#logo").HIDE();
 	$(@"#state").DATA( __TEXT(@"tips_pull_refresh") );
 	$(@"#date").DATA( [NSString stringWithFormat:@"%@%@", __TEXT(@"tips_last_update"), [[NSDate date] stringWithDateFormat:__TEXT(@"date_format")]] );
+    
+    
 }
 
 - (void)unload

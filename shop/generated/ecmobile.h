@@ -483,6 +483,9 @@ AS_MESSAGE( comments );
 // POST config
 AS_MESSAGE( config );
 
+// POST notice
+AS_MESSAGE( notice );
+
 // POST flow/checkOrder
 AS_MESSAGE( flow_checkOrder );
 
