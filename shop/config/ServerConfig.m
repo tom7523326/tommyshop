@@ -40,7 +40,8 @@ DEF_SINGLETON( ServerConfig )
 	if ( self )
 	{
 		//self.url = @"http://shop.ecmobile.me/ecmobile/?url=";
-        self.url = @"http://218.244.145.64/";
+//       self.url = @"http://218.244.145.64/";
+        self.url = @"http://mall.ahbsdny.com/";
 	}
 	return self;
 }

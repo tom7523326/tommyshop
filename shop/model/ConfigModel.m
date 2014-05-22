@@ -86,6 +86,7 @@ DEF_INT( PHOTO_MODE_LOW,	2 )
 
 - (void)update
 {
+    //先屏蔽动态获取config的功能
 	self.CANCEL_MSG( API.config );
 	self.MSG( API.config );
 }
@@ -94,6 +95,7 @@ DEF_INT( PHOTO_MODE_LOW,	2 )
 
 - (void)handleMessage:(BeeMessage *)msg
 {
+   
 	if ( [msg is:API.config] )
 	{
 		if ( msg.succeed )
@@ -104,21 +106,39 @@ DEF_INT( PHOTO_MODE_LOW,	2 )
 				msg.failed = YES;
 				return;
 			}
-
-			self.config = msg.GET_OUTPUT( @"config" );
-			self.loaded = YES;
+            NSDictionary *version = msg.GET_OUTPUT(@"version");
+            NSString *versionStr = [version objectForKey:@"version"];
+            
+            //获取本程序的版本号
+            NSString *nowversion = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
+            if(nowversion.floatValue < versionStr.floatValue)
+            {
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"有新版本可以升级，是否升级" delegate:self cancelButtonTitle:@"升级" otherButtonTitles:@"取消",nil];
+                [alert show];
+                [alert release];
+            }
+            else
+            {
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"已经是最新版本 不用升级" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                [alert show];
+                [alert release];
+            }
+            
+ //先屏蔽动态获取config的功能
+//			self.config = msg.GET_OUTPUT( @"config" );
+//			self.loaded = YES;
 			
-			[self saveCache];
-			[self postNotification:self.UPDATED];
+//			[self saveCache];
+//			[self postNotification:self.UPDATED];
 			
-			if ( self.config.shop_closed.boolValue )
-			{
-				[self postNotification:self.SHOP_CLOSED];
-			}
-			else
-			{
-				[self postNotification:self.SHOP_OPENED];
-			}
+//			if ( self.config.shop_closed.boolValue )
+//			{
+//				[self postNotification:self.SHOP_CLOSED];
+//			}
+//			else
+//			{
+//				[self postNotification:self.SHOP_OPENED];
+//			}
 		}
 	}
 }

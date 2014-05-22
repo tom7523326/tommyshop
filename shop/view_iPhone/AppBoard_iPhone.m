@@ -171,7 +171,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.WILL_APPEAR] )
     {		
-		[[ConfigModel sharedInstance] update];
+//		[[ConfigModel sharedInstance] update];
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {

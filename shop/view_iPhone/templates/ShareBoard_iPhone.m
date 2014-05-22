@@ -80,7 +80,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
     {
         [[AppBoard_iPhone sharedInstance] setTabbarHidden:YES];
         
-        [[ConfigModel sharedInstance] update];
+//        [[ConfigModel sharedInstance] update];
         
         if ( self.platform == self.PLATFORM_SINA )
         {
@@ -133,27 +133,28 @@ ON_SIGNAL2( BeeUIBoard, signal )
 
 - (void)handleMessage:(BeeMessage *)msg
 {
-    if ( [msg is:API.config] )
-    {
-        if ( msg.sending )
-        {
-            [self presentLoadingTips:__TEXT(@"tips_loading")];
-        }
-		else
-		{
-			[self dismissTips];
-		}
-		
-		if ( msg.succeed )
-        {
-            self.urlString = [self shareUrl:self.platform];
-            [self refresh];
-        }
-        else if ( msg.failed )
-        {
-			[ErrorMsg presentErrorMsg:msg inBoard:self];
-        }
-    }
+    //先屏蔽动态获取config的功能
+//    if ( [msg is:API.config] )
+//    {
+//        if ( msg.sending )
+//        {
+//            [self presentLoadingTips:__TEXT(@"tips_loading")];
+//        }
+//		else
+//		{
+//			[self dismissTips];
+//		}
+//		
+//		if ( msg.succeed )
+//        {
+//            self.urlString = [self shareUrl:self.platform];
+//            [self refresh];
+//        }
+//        else if ( msg.failed )
+//        {
+//			[ErrorMsg presentErrorMsg:msg inBoard:self];
+//        }
+//    }
 }
 
 @end

@@ -74,7 +74,7 @@ DEF_SIGNAL( SIGN_OUT )
     _geek_zoo = [[FormElement subtitleCell] retain];
     _geek_zoo.title = @"APP二维码";
 //    NSArray * group3 = @[ _bee, _rate, _about, _geek_zoo ];
-        NSArray * group3 = @[ _bee, _geek_zoo ];
+        NSArray * group3 = @[ _bee,_about, _geek_zoo ];
     
     FormElement *_email =[[FormElement cell] retain];
     _email.title = @"dopies@163.com";
@@ -160,7 +160,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
     else if ( [signal is:BeeUIBoard.WILL_APPEAR] )
     {
 		[[AppBoard_iPhone sharedInstance] setTabbarHidden:YES];
-        [[ConfigModel sharedInstance] update];
+//        [[ConfigModel sharedInstance] update];
 		
 		[self updateState];
     }
@@ -250,16 +250,17 @@ ON_NOTIFICATION3( UserModel, KICKOUT, notification )
 
 - (void)handleMessage:(BeeMessage *)msg
 {
+    //先屏蔽动态获取config的功能
     if ( [msg is:API.config] )
     {
         if ( msg.sending )
         {
-//			[self presentLoadingTips:__TEXT(@"tips_loading")];
+			[self presentLoadingTips:__TEXT(@"tips_loading")];
         }
         else if ( msg.succeed )
         {
 //			[self dismissTips];
-            [self reloadData];
+//            [self reloadData];
         }
         else if ( msg.failed )
         {
@@ -320,10 +321,13 @@ ON_NOTIFICATION3( UserModel, KICKOUT, notification )
         }
         else if ( element == _about )
         {
-                WebViewBoard_iPhone * board = [WebViewBoard_iPhone board];
-                board.defaultTitle = __TEXT(@"setting_tech");
-                board.urlString = @"http://www.ecmobile.me/";
-                [self.stack pushBoard:board animated:YES];
+//                WebViewBoard_iPhone * board = [WebViewBoard_iPhone board];
+//                board.defaultTitle = __TEXT(@"setting_tech");
+//                board.urlString = @"http://www.ecmobile.me/";
+//                [self.stack pushBoard:board animated:YES];
+            
+            [[ConfigModel sharedInstance] update];
+            
         }
         else if ( element == _geek_zoo )
         {

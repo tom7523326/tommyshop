@@ -3438,7 +3438,7 @@
 				ORGANIZATIONNAME = "geek-zoo studio";
 				TargetAttributes = {
 					63249C9A1754E07900372FD7 = {
-						DevelopmentTeam = 26R8TYMFHL;
+						DevelopmentTeam = JWD48Y236P;
 					};
 				};
 			};
@@ -4160,8 +4160,8 @@
 		63249CB91754E07900372FD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Nanjing Dopies Software Technology Co., Ltd. (Z9V9WHZRR2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Nanjing Dopies Software Technology Co., Ltd. (Z9V9WHZRR2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: LI Leichuan (YK29UXBS4P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: LI Leichuan (YK29UXBS4P)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "shop/shop-Prefix.pch";
@@ -4174,8 +4174,8 @@
 					"$(PROJECT_DIR)/framework",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "DDC268BA-2ADB-4716-93D1-464CEA169216";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DDC268BA-2ADB-4716-93D1-464CEA169216";
+				PROVISIONING_PROFILE = "29CC0E0C-088A-4710-9AE6-26DFB3AC7C33";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "29CC0E0C-088A-4710-9AE6-26DFB3AC7C33";
 				STRIP_INSTALLED_PRODUCT = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";
@@ -4186,8 +4186,8 @@
 		63249CBA1754E07900372FD7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Nanjing Dopies Software Technology Co., Ltd. (Z9V9WHZRR2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Nanjing Dopies Software Technology Co., Ltd. (Z9V9WHZRR2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: LI Leichuan (YK29UXBS4P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: LI Leichuan (YK29UXBS4P)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "shop/shop-Prefix.pch";
@@ -4200,8 +4200,8 @@
 					"$(PROJECT_DIR)/framework",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "DDC268BA-2ADB-4716-93D1-464CEA169216";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DDC268BA-2ADB-4716-93D1-464CEA169216";
+				PROVISIONING_PROFILE = "29CC0E0C-088A-4710-9AE6-26DFB3AC7C33";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "29CC0E0C-088A-4710-9AE6-26DFB3AC7C33";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -4240,8 +4240,8 @@
 		CBB448D417E86C4E00E83FFB /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Nanjing Dopies Software Technology Co., Ltd. (Z9V9WHZRR2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Nanjing Dopies Software Technology Co., Ltd. (Z9V9WHZRR2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: LI Leichuan (YK29UXBS4P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: LI Leichuan (YK29UXBS4P)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "shop/shop-Prefix.pch";
@@ -4254,8 +4254,8 @@
 					"$(PROJECT_DIR)/framework",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "DDC268BA-2ADB-4716-93D1-464CEA169216";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DDC268BA-2ADB-4716-93D1-464CEA169216";
+				PROVISIONING_PROFILE = "29CC0E0C-088A-4710-9AE6-26DFB3AC7C33";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "29CC0E0C-088A-4710-9AE6-26DFB3AC7C33";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
