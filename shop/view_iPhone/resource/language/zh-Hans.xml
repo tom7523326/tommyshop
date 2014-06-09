@@ -42,9 +42,9 @@
 <string name="select_address">选择地址</string>
 <string name="addressb_country">选择国家</string>
 <string name="manage_address">收货地址管理</string>
-<string name="manage_phone">电话:025-83696733</string>
+<string name="manage_phone">服务热线: 025-52103211</string>
 <string name="manage_help">帮助</string>
-<string name="manage_addressdetail">南京市雨花区双龙嘉园石华街16号4幢106</string>
+<string name="manage_addressdetail">南京市江宁区将军大道世界之窗H座2楼</string>
 <string name="manage_help_detail">一、商品展示</string>
 <string name="manage_help_detail1"> 打开APP即可看到当前店铺正在销售的</string>
 <string name="manage_help_detail2"> 各类茶叶。特价、热销，各种惊喜哦。</string>
@@ -329,7 +329,7 @@
 <string name="single">单选</string>
 <string name="multiple">多选</string>
 <string name="unique">唯一</string>
-<string name="ecmobile">建园春茶业</string>
+<string name="ecmobile">博仕达APP商城</string>
 <string name="new_activity">最新活动</string>
 <string name="save">保存</string>
 <string name="avail_exp">您的可用积分为</string>
@@ -359,7 +359,7 @@
 <string name="please_input">请输入</string>
 <string name="signing_up">注册中</string>
 <string name="large_photo">商品大图</string>
-<string name="app_name">建园春茶业</string>
+<string name="app_name">博仕达APP商城</string>
 <string name="user_not_exist">用户名不存在</string>
 <string name="invalid_password">密码错误</string>
 <string name="user_or_email_exists">用户名或email已使用</string>
@@ -373,7 +373,7 @@
 <string name="smooth_operation_experience">APP更便捷、流畅的操作体验</string>
 <string name="ecmobile_design_introduction">APP操作简单快捷，使用方便</string>
 <string name="excellent_service">还犹豫什么呢，快点来逛逛吧</string>
-<string name="excellent_parter">建园春茶业</string>
+<string name="excellent_parter">博仕达APP商城</string>
 <string name="success_share">成功！！</string>
 <string name="user_cancel">用户取消！！</string>
 <string name="fail_share">：失败！！</string>

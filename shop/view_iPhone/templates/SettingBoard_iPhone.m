@@ -66,7 +66,7 @@ DEF_SIGNAL( SIGN_OUT )
     NSArray * group1 = @[ _pic1, _pic2, _pic3 ];
 
     _bee = [[FormElement subtitleCell] retain];
-    _bee.title = @"关于建园春茶业";
+    _bee.title = @"关于博仕达APP商城";
     _rate = [[FormElement subtitleCell] retain];
     _rate.title = @"意见反馈";
     _about = [[FormElement subtitleCell] retain];
