@@ -427,6 +427,7 @@ CONVERT_PROPERTY_CLASS( goods_list, ORDER_GOODS );
 @synthesize order_num = _order_num;
 @synthesize rank_name = _rank_name;
 @synthesize rank_level = _rank_level;
+@synthesize score_num = _score_num;
 
 @end
 
@@ -2210,6 +2211,66 @@ DEF_MESSAGE_( user_signin, msg )
 	}
 }
 
+DEF_MESSAGE_( changerecord, msg )
+{
+	if ( msg.sending )
+	{
+		NSString * name = msg.GET_INPUT( @"amount" );
+		NSString * password = msg.GET_INPUT( @"desc" );
+        SESSION * session = msg.GET_INPUT( @"session" );
+        
+		if ( nil == name || NO == [name isKindOfClass:[NSString class]] )
+		{
+			msg.failed = YES;
+			return;
+		}
+		if ( nil == password || NO == [password isKindOfClass:[NSString class]] )
+		{
+			msg.failed = YES;
+			return;
+		}
+        
+		NSMutableDictionary * requestBody = [NSMutableDictionary dictionary];
+         requestBody.APPEND(@"session",session);
+        requestBody.APPEND(@"type",@"jifen");
+		requestBody.APPEND( @"amount", name );
+		requestBody.APPEND( @"desc", password );
+        
+        //		NSString * requestURI = @"http://shop.ecmobile.me/ecmobile/?url=user/signin";
+		NSString * requestURI = [NSString stringWithFormat:@"%@user/account.php", [ServerConfig sharedInstance].url];
+        NSLog(@"requestBody.objectToString is %@ url %@",requestBody.objectToString,requestURI);
+		
+        
+		msg.HTTP_POST( requestURI ).PARAM( @"json",requestBody.objectToString);
+        
+        
+	}
+	else if ( msg.succeed )
+	{
+		NSDictionary * response = msg.responseJSONDictionary;
+		STATUS * status = [STATUS objectFromDictionary:[response dictAtPath:@"status"]];
+		NSString * data = [response stringAtPath:@"data"];
+        
+		if ( nil == status || NO == [status isKindOfClass:[STATUS class]] )
+		{
+			msg.failed = YES;
+			return;
+		}
+        
+		msg.OUTPUT( @"status", status );
+		msg.OUTPUT( @"data", data );
+        
+	}
+	else if ( msg.failed )
+	{
+        
+	}
+	else if ( msg.cancelled )
+	{
+        
+	}
+}
+
 #pragma mark - POST user/signup
 
 DEF_MESSAGE_( user_signup, msg )
@@ -2220,6 +2281,7 @@ DEF_MESSAGE_( user_signup, msg )
 		NSString * name = msg.GET_INPUT( @"name" );
 		NSString * password = msg.GET_INPUT( @"password" );
 		NSArray * field = msg.GET_INPUT( @"field" );
+        NSString *recommend = msg.GET_INPUT(@"recommend");
 
 		if ( nil == email || NO == [email isKindOfClass:[NSString class]] )
 		{
@@ -2242,6 +2304,7 @@ DEF_MESSAGE_( user_signup, msg )
 		requestBody.APPEND( @"name", name );
 		requestBody.APPEND( @"password", password );
 		requestBody.APPEND( @"field", field );
+        requestBody.APPEND( @"reg_rec",recommend);
 
 //		NSString * requestURI = @"http://shop.ecmobile.me/ecmobile/?url=user/signup";
 		NSString * requestURI = [NSString stringWithFormat:@"%@user/signup.php", [ServerConfig sharedInstance].url];

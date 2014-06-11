@@ -425,6 +425,7 @@ enum RANK_LEVEL
 @property (nonatomic, retain) NSString *		rank_name;
 @property (nonatomic, retain) NSNumber *		rank_level;
 @property (nonatomic, retain) NSNumber *		id;
+@property (nonatomic, retain) NSNumber *        score_num;
 @end
 
 @interface COLLECT_GOODS : SIMPLE_GOODS
@@ -545,6 +546,9 @@ AS_MESSAGE( user_info );
 
 // POST user/signin
 AS_MESSAGE( user_signin );
+
+// POST USER/changerecord
+AS_MESSAGE( changerecord );
 
 // POST user/signup
 AS_MESSAGE( user_signup );

@@ -1,19 +1,19 @@
 <!--
-/*
- *                                                                          
- *       _/_/_/                      _/        _/_/_/_/_/                     
- *    _/          _/_/      _/_/    _/  _/          _/      _/_/      _/_/    
- *   _/  _/_/  _/_/_/_/  _/_/_/_/  _/_/          _/      _/    _/  _/    _/   
- *  _/    _/  _/        _/        _/  _/      _/        _/    _/  _/    _/    
- *   _/_/_/    _/_/_/    _/_/_/  _/    _/  _/_/_/_/_/    _/_/      _/_/       
- *                                                                          
+ /*
+ *
+ *       _/_/_/                      _/        _/_/_/_/_/
+ *    _/          _/_/      _/_/    _/  _/          _/      _/_/      _/_/
+ *   _/  _/_/  _/_/_/_/  _/_/_/_/  _/_/          _/      _/    _/  _/    _/
+ *  _/    _/  _/        _/        _/  _/      _/        _/    _/  _/    _/
+ *   _/_/_/    _/_/_/    _/_/_/  _/    _/  _/_/_/_/_/    _/_/      _/_/
+ *
  *
  *  Copyright 2013-2014, Geek Zoo Studio
  *  http://www.ecmobile.cn/license.html
  *
  *  HQ China:
- *    2319 Est.Tower Van Palace 
- *    No.2 Guandongdian South Street 
+ *    2319 Est.Tower Van Palace
+ *    No.2 Guandongdian South Street
  *    Beijing , China
  *
  *  U.S. Office:
@@ -27,92 +27,96 @@
  -->
 
 <?xml version="1.0" encoding="utf-8" ?>
-<ui namespace="SigninBoard_iPhone">
-
+<ui namespace="ChangeRecord_iPhone">
+    
 	<linear orientation="v" class="list-wrapper-group">
-        
 		<linear orientation="h" class="list-item-header">
 			<image class="list-item-header-bg"/>
 			<image class="input-icon-user" />
-			<input id="username" class="input" placeholder="@{login_username}"></input>
+			<input id="username" class="input" placeholder="@{login_acord}"></input>
 		</linear>
 		<linear orientation="h" class="list-item-footer">
 			<image class="list-item-footer-bg"/>
 			<image class="input-icon-password" />
-			<input id="password" class="input done" placeholder="@{login_password}"></input>
+			<input id="password" class="input done" placeholder="@{login_acountnum}"></input>
 		</linear>
-		
-		<linear orientation="v" class="signup-wrapper">
-			<button id="signup">@{login_register}</button>
-			<view class="line"/>
-		</linear>
+        
+        <linear orientation="h" class="button-wrapper">
+            <button id="signup" class="button-narrow-blue">@{login_uprequest}</button>
+        </linear>
 	</linear>
-
-    <style type="text/css">
     
+    <style type="text/css">
+        
         .input-icon-user {
-            margin-left: 10px;
-            margin-right: 10px;
-            width: 18px;
-            height: 18px;
-            image-src: url(log-in-key-icon.png);
-			image-mode: center;
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 18px;
+        height: 18px;
+        image-src: url(log-in-key-icon.png);
+        image-mode: center;
         }
         
         .input-icon-password {
-            margin-left: 10px;
-            margin-right: 10px;
-            width: 18px;
-            height: 18px;
-            image-src: url(log-in-user-name-icon.png);
-			image-mode: fit;
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 18px;
+        height: 18px;
+        image-src: url(log-in-user-name-icon.png);
+        image-mode: fit;
         }
-
+        
 		.signup-wrapper {
-			width: 100%;
-			height: auto;
+        width: 100%;
+        height: auto;
 		}
         
         #signup {
-            margin-top: 20px;
-            float: center;
-            height: 20px;
-            width: 50%;
-            float: center;
-            margin-right: 20;
-            button-title-color: #666;
+        margin-top: 20px;
+        float: center;
+        height: 20px;
+        width: 50%;
+        float: center;
+        margin-right: 20;
+        button-title-color: #666;
         }
-		
+        .button-narrow-blue {
+        width: 90px;
+        height: 43px;
+        background-image: url(button-narrow-blue.png) stretch;
+        color: #fff;
+        font-size: 10px;
+        font-weight: lighter;
+        margin-left: 63px;
+        }
+
+
 		.line {
-			margin-top: 1px;
-			float: center;
-			height: 1px;
-			width: 40%;
-			background-color: #666;
+        margin-top: 1px;
+        float: center;
+        height: 1px;
+        width: 40%;
+        background-color: #666;
 		}
         
         .input {
-			height: 25px;
-			width: 255px;
-			line-height: 25px;
-			font: 16px;
-			input-clear: editing;
-			input-capitalization: none;
-			input-return-key: next;
-			input-correction: false;
+        height: 25px;
+        width: 255px;
+        line-height: 25px;
+        font: 16px;
+        input-clear: editing;
+        input-capitalization: none;
+        input-return-key: next;
+        input-correction: false;
         }
 		
 		.done {
-			input-secure: yes;
-			input-return-key: done;
 		}
         
         #username {
         }
         
         #password {
-			input-secure: yes;
-			input-keyboard: abc;
         }
         
         .list-wrapper {

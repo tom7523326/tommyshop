@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		537B74C819470D4A001BD514 /* ChangeRecord_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 537B74C719470D4A001BD514 /* ChangeRecord_iPhone.m */; };
+		537B74CA19470DB5001BD514 /* ChangeRecord_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = 537B74C919470DB5001BD514 /* ChangeRecord_iPhone.xml */; };
+		537B74CD1947157D001BD514 /* ChangeRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 537B74CC1947157D001BD514 /* ChangeRecordModel.m */; };
 		6302390C177C1676004C052D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 630236B1177C1675004C052D /* AppDelegate.m */; };
 		6302390F177C1676004C052D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 630236B7177C1675004C052D /* Default-568h@2x.png */; };
 		63023910177C1676004C052D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 630236B8177C1675004C052D /* Default.png */; };
@@ -634,6 +637,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		537B74C619470D4A001BD514 /* ChangeRecord_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeRecord_iPhone.h; sourceTree = "<group>"; };
+		537B74C719470D4A001BD514 /* ChangeRecord_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeRecord_iPhone.m; sourceTree = "<group>"; };
+		537B74C919470DB5001BD514 /* ChangeRecord_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ChangeRecord_iPhone.xml; sourceTree = "<group>"; };
+		537B74CB1947157D001BD514 /* ChangeRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeRecordModel.h; sourceTree = "<group>"; };
+		537B74CC1947157D001BD514 /* ChangeRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeRecordModel.m; sourceTree = "<group>"; };
 		630236B0177C1675004C052D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		630236B1177C1675004C052D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		630236B7177C1675004C052D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -1766,6 +1774,8 @@
 				630236E2177C1675004C052D /* SearchModel.m */,
 				78B2F3F9192E4AAE0076497D /* NoticeModel.h */,
 				78B2F3FA192E4AAE0076497D /* NoticeModel.m */,
+				537B74CB1947157D001BD514 /* ChangeRecordModel.h */,
+				537B74CC1947157D001BD514 /* ChangeRecordModel.m */,
 				630236E5177C1675004C052D /* UserModel.h */,
 				630236E6177C1675004C052D /* UserModel.m */,
 				630236E7177C1675004C052D /* ValidateModel.h */,
@@ -2218,6 +2228,9 @@
 				E909CBED182D0D650095B262 /* SigninBoard_iPhone.h */,
 				E909CBEE182D0D650095B262 /* SigninBoard_iPhone.m */,
 				E909CBEF182D0D650095B262 /* SigninBoard_iPhone.xml */,
+				537B74C619470D4A001BD514 /* ChangeRecord_iPhone.h */,
+				537B74C719470D4A001BD514 /* ChangeRecord_iPhone.m */,
+				537B74C919470DB5001BD514 /* ChangeRecord_iPhone.xml */,
 				E909CBF0182D0D650095B262 /* SignupBoard_iPhone.h */,
 				E909CBF1182D0D650095B262 /* SignupBoard_iPhone.m */,
 				E909CBF2182D0D650095B262 /* SignupBoard_iPhone.xml */,
@@ -3566,6 +3579,7 @@
 				E909CC09182D0D650095B262 /* CategoryCell_iPhone.xml in Resources */,
 				CB3775FE17C5FF6F00DF5F21 /* item-grid-filter-sanjiao-icon@2x.png in Resources */,
 				CB3775FF17C5FF6F00DF5F21 /* item-grid-filter-up-active-arrow@2x.png in Resources */,
+				537B74CA19470DB5001BD514 /* ChangeRecord_iPhone.xml in Resources */,
 				CB37760017C5FF6F00DF5F21 /* item-grid-filter-up-arrow@2x.png in Resources */,
 				CB37760117C5FF6F00DF5F21 /* item-grid-float-bg-grey@2x.png in Resources */,
 				CB37760217C5FF6F00DF5F21 /* item-grid-float-shopping-cart-icon@2x.png in Resources */,
@@ -3734,6 +3748,7 @@
 				E970D736182CE4E200146363 /* Bee_UITemplateSyntaxEXPR.m in Sources */,
 				E970D6EE182CE4E200146363 /* Bee_UIView.m in Sources */,
 				E909CC57182D0D650095B262 /* SigninBoard_iPhone.m in Sources */,
+				537B74CD1947157D001BD514 /* ChangeRecordModel.m in Sources */,
 				E970D725182CE4E200146363 /* BeeUIQuery+Transform.m in Sources */,
 				E909CC1F182D0D650095B262 /* WebViewBoard_iPhone.m in Sources */,
 				E909CBFE182D0D650095B262 /* AwaitShipBoard_iPhone.m in Sources */,
@@ -3887,6 +3902,7 @@
 				63023923177C1676004C052D /* RegionModel.m in Sources */,
 				E970D762182CE4E200146363 /* Bee_Thread.mm in Sources */,
 				63023924177C1676004C052D /* SearchKeywordsModel.m in Sources */,
+				537B74C819470D4A001BD514 /* ChangeRecord_iPhone.m in Sources */,
 				E970D746182CE4E200146363 /* Bee_Cache.mm in Sources */,
 				E970D6D6182CE4E200146363 /* Bee_UIButton.m in Sources */,
 				E909CBF9182D0D650095B262 /* AdvancedSearchBoard_iPhone.m in Sources */,

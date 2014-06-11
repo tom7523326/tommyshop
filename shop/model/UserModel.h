@@ -55,7 +55,8 @@ AS_NOTIFICATION( UPDATED )
 - (void)signupWithUser:(NSString *)user
 			  password:(NSString *)password
 				 email:(NSString *)email
-				fields:(NSArray *)fields;
+				fields:(NSArray *)fields
+             recommend:(NSString*)recommend;
 
 - (void)signout;
 - (void)kickout;

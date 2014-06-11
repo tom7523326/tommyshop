@@ -199,6 +199,7 @@ DEF_NOTIFICATION( UPDATED )
 			  password:(NSString *)password
 				 email:(NSString *)email
 				fields:(NSArray *)fields
+             recommend:(NSString*)recommend
 {
 	self.CANCEL_MSG( API.user_signup );
 	self
@@ -206,7 +207,8 @@ DEF_NOTIFICATION( UPDATED )
 	.INPUT( @"name", user )
 	.INPUT( @"password", password )
 	.INPUT( @"email", email )
-	.INPUT( @"field", fields );
+	.INPUT( @"field", fields )
+    .INPUT( @"recommend", recommend );
 }
 
 - (void)signout

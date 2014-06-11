@@ -99,6 +99,27 @@
             
             <linear orientation="v" class="list-wrapper">
                 
+                
+                <linear orientation="h" class="list-item">
+                    <image class="list-bg"/>
+                    <label class="list-title">@{collect_myscore}</label>
+                    <label id="myscore-count" class="list-subtitle">0</label>
+                </linear>
+                <linear orientation="h" class="list-item">
+                    <image class="list-bg"/>
+                    <label class="list-title">@{collect_myscore}</label>
+                    <label id="myscore-count" class="list-subtitle">0</label>
+                    <image class="list-indictor"/>
+                    <button id="score" class="fill"/>
+                </linear>
+                <linear orientation="h" class="list-item">
+                    <image class="list-bg"/>
+                    <label class="list-title">@{collect_myscore}</label>
+                    <label id="myscore-count" class="list-subtitle">0</label>
+                    <image class="list-indictor"/>
+                    <button id="score" class="fill"/>
+                </linear>
+                
                 <linear orientation="h" class="list-item">
                     <image class="list-bg"/>
                     <label class="list-title">@{collect_myfavorite}</label>
@@ -125,9 +146,7 @@
                 
                 <linear orientation="h" class="list-item">
                     <image class="list-bg"/>
-                    <label class="list-title">@{manage_phone}</label>
-                    <label class="list-subtitle"></label>
-                    <image class="list-indictor"/>
+                    <label class="list-title1">@{manage_phone}</label>
                     <button id="phone" class="fill"/>
                 </linear>
                 

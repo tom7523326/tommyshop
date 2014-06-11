@@ -38,6 +38,7 @@
 #import "HelpBoard_iPhone.h"
 #import "Placeholder.h"
 #import "Helps_iphone.h"
+#import "ChangeRecord_iPhone.h"
 
 #pragma mark -
 
@@ -73,6 +74,12 @@ SUPPORT_RESOURCE_LOADING( YES )
 		{
 			$(@"#fav-count").TEXT( [NSString stringWithFormat:@"%@%@", userModel.user.collection_num, __TEXT(@"no_of_items")] );
 		}
+        if(userModel.user.score_num.intValue > 0)
+        {
+            $(@"#myscore-count").TEXT( [NSString stringWithFormat:@"%@", userModel.user.score_num] );
+
+            
+        }
 		      
 		NSNumber * num1 = [[userModel.user.order_num objectAtPath:@"await_pay"] asNSNumber];
 		if ( num1 && num1.intValue )
@@ -379,6 +386,19 @@ ON_SIGNAL3( ProfileCell_iPhone, collection, signal )
 		}
 		
         [self.stack pushBoard:[CollectionBoard_iPhone board] animated:YES];
+    }
+}
+ON_SIGNAL3( ProfileCell_iPhone, score, signal )
+{
+    if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
+    {
+		if ( NO == [UserModel online] )
+		{
+			[[AppBoard_iPhone sharedInstance] showLogin];
+			return;
+		}
+		
+        [self.stack pushBoard:[ChangeRecord_iPhone board] animated:YES];
     }
 }
 

@@ -211,6 +211,11 @@ ON_SIGNAL3( SignupBoard_iPhone, signin, signal )
     }
 #endif
     
+    FormElement * userreco = [FormElement input];
+    userreco.tagString = @"recommend";
+    userreco.placeholder = @"推荐人编号若没有则不填";
+    userreco.returnKeyType = UIReturnKeyNext;
+    
     FormElement * username = [FormElement input];
     username.tagString = @"username";
     username.placeholder = __TEXT(@"login_username");
@@ -241,7 +246,7 @@ ON_SIGNAL3( SignupBoard_iPhone, signin, signal )
         password2.returnKeyType = UIReturnKeyNext;
     }
     
-    NSArray * group1 = @[username, email, password, password2];
+    NSArray * group1 = @[userreco,username, email, password, password2];
     [self.datas addObject:group1];
 
     if ( fields && 0 != fields.count  )
@@ -274,7 +279,8 @@ ON_SIGNAL3( SignupBoard_iPhone, signin, signal )
 }
 
 - (void)doRegister
-{    
+{
+    NSString * recommend = nil;
     NSString * userName = nil;
   	NSString * email = nil;
   	NSString * password = nil;
@@ -286,6 +292,11 @@ ON_SIGNAL3( SignupBoard_iPhone, signin, signal )
 
     for ( FormInputCell * cell in cells )
     {
+        if ( [cell.tagString isEqualToString:@"recommend"] )
+        {
+            recommend = cell.input.text.trim;
+        }
+        
         if ( [cell.tagString isEqualToString:@"username"] )
         {
             userName = cell.input.text.trim;
@@ -317,6 +328,11 @@ ON_SIGNAL3( SignupBoard_iPhone, signin, signal )
             fieldValue.value = cell.input.text;
             [fields addObject:fieldValue];
         }
+    }
+    if(![self isPureInt:recommend])
+    {
+        [self presentMessageTips:@"分享者编号必须为纯数字！"];
+		return;
     }
 	
 	if ( 0 == userName.length || NO == [userName isChineseUserName] )
@@ -370,7 +386,8 @@ ON_SIGNAL3( SignupBoard_iPhone, signin, signal )
 	[[UserModel sharedInstance] signupWithUser:userName
 									  password:password
 										 email:email
-										fields:fields];
+										fields:fields
+                                     recommend:recommend];
 }
 
 - (void)handleMessage:(BeeMessage *)msg
@@ -404,6 +421,11 @@ ON_SIGNAL3( SignupBoard_iPhone, signin, signal )
 			[ErrorMsg presentErrorMsg:msg inBoard:self];
 		}
 	}
+}
+- (BOOL)isPureInt:(NSString*)string{
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    int val;
+    return[scan scanInt:&val] && [scan isAtEnd];
 }
 
 @end
