@@ -102,9 +102,13 @@
                 
                 <linear orientation="h" class="list-item">
                     <image class="list-bg"/>
-                    <label class="list-title">@{collect_myscore}</label>
-                    <label id="myscore-count" class="list-subtitle">0</label>
+                    <label class="list-title">@{collect_recommend}</label>
+                    <label id="recommendid" class="list-subtitle">0</label>
                 </linear>
+                
+                
+                
+                
                 <linear orientation="h" class="list-item">
                     <image class="list-bg"/>
                     <label class="list-title">@{collect_myscore}</label>
@@ -112,12 +116,13 @@
                     <image class="list-indictor"/>
                     <button id="score" class="fill"/>
                 </linear>
+                
                 <linear orientation="h" class="list-item">
                     <image class="list-bg"/>
-                    <label class="list-title">@{collect_myscore}</label>
-                    <label id="myscore-count" class="list-subtitle">0</label>
+                    <label class="list-title">@{collect_recommendnum}</label>
+                    <label id="recmum" class="list-subtitle">0</label>
                     <image class="list-indictor"/>
-                    <button id="score" class="fill"/>
+                    <button id="recnumBtn" class="fill"/>
                 </linear>
                 
                 <linear orientation="h" class="list-item">

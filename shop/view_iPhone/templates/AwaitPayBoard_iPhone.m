@@ -402,6 +402,8 @@ ON_SIGNAL2( AwaitPayCell_iPhone, signal )
 			if ([verifier verifyString:result.resultString withSign:result.signString])
             {
                 //验证签名成功，交易结果无篡改
+                
+                	
 			}
         }
         else

@@ -39,6 +39,8 @@
 #import "Placeholder.h"
 #import "Helps_iphone.h"
 #import "ChangeRecord_iPhone.h"
+#import "RecomendPickBoar_iPhone.h"
+#import "RecommendUsersModel.h"
 
 #pragma mark -
 
@@ -79,6 +81,15 @@ SUPPORT_RESOURCE_LOADING( YES )
             $(@"#myscore-count").TEXT( [NSString stringWithFormat:@"%@", userModel.user.score_num] );
 
             
+        }
+        
+        if(userModel.user.recommend_num.integerValue > 0)
+        {
+             $(@"#recmum").TEXT( [NSString stringWithFormat:@"%@", userModel.user.recommend_num] );
+        }
+        if(userModel.user.id.integerValue > 0)
+        {
+            $(@"#recommendid").TEXT( [NSString stringWithFormat:@"%@", userModel.user.id] );
         }
 		      
 		NSNumber * num1 = [[userModel.user.order_num objectAtPath:@"await_pay"] asNSNumber];
@@ -195,6 +206,7 @@ DEF_SIGNAL( PHOTO_REMOVE )
     [super load];
     
     [[UserModel sharedInstance] addObserver:self];
+    [[RecommendUsersModel sharedInstance]addObserver:self];
     
 	self.helpModel = [[[HelpModel alloc] init] autorelease];
 	[self.helpModel addObserver:self];
@@ -203,6 +215,7 @@ DEF_SIGNAL( PHOTO_REMOVE )
 - (void)unload
 {
     [self.helpModel removeObserver:self];
+     [[RecommendUsersModel sharedInstance]removeObserver:self];
     self.helpModel = nil;
     
     [[UserModel sharedInstance] removeObserver:self];
@@ -399,6 +412,20 @@ ON_SIGNAL3( ProfileCell_iPhone, score, signal )
 		}
 		
         [self.stack pushBoard:[ChangeRecord_iPhone board] animated:YES];
+    }
+}
+ON_SIGNAL3( ProfileCell_iPhone, recnumBtn, signal )
+{
+    if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
+    {
+		if ( NO == [UserModel online] )
+		{
+			[[AppBoard_iPhone sharedInstance] showLogin];
+			return;
+		}
+		NSNumber *userid =[UserModel sharedInstance].user.id;
+        [RecommendUsersModel sharedInstance].parent_id = userid;
+        [[RecommendUsersModel sharedInstance] fetchFromServer];
     }
 }
 
@@ -655,6 +682,26 @@ ON_NOTIFICATION3( UserModel, UPDATED, notification )
             //            [self presentFailureTips:@"加载失败,请稍后再试"];
 			[ErrorMsg presentErrorMsg:msg inBoard:self];
 		}
+    }
+    else if ([msg is:API.recommendUsers])
+    {
+		
+		if ( msg.succeed )
+		{
+            if ( ((STATUS *)msg.GET_OUTPUT(@"status")).succeed.boolValue )
+            {
+                RecomendPickBoar_iPhone * board = [[[RecomendPickBoar_iPhone alloc] init] autorelease];
+                board.rootBoard = self;
+                board.regions = [RecommendUsersModel sharedInstance].regions;
+                [self.stack pushBoard:board animated:YES];
+            }
+		}
+		else if ( msg.failed )
+		{
+            //            [self presentFailureTips:@"加载失败,请稍后再试"];
+			[ErrorMsg presentErrorMsg:msg inBoard:self];
+		}
+
     }
 }
 

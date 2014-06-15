@@ -425,7 +425,8 @@ enum RANK_LEVEL
 @property (nonatomic, retain) NSString *		rank_name;
 @property (nonatomic, retain) NSNumber *		rank_level;
 @property (nonatomic, retain) NSNumber *		id;
-@property (nonatomic, retain) NSNumber *        score_num;
+@property (nonatomic, retain) NSNumber *        score_num;//new add
+@property (nonatomic, retain) NSNumber *        recommend_num;//new adds
 @end
 
 @interface COLLECT_GOODS : SIMPLE_GOODS
@@ -523,6 +524,11 @@ AS_MESSAGE( order_pay );
 // POST region
 AS_MESSAGE( region );
 
+
+// POST recommendUsers
+AS_MESSAGE( recommendUsers );
+
+
 // POST search
 AS_MESSAGE( search );
 
@@ -531,6 +537,11 @@ AS_MESSAGE( searchKeywords );
 
 // POST shopHelp
 AS_MESSAGE( shopHelp );
+
+
+// POST affirmPaid new add
+
+AS_MESSAGE( affirmPaid );
 
 // POST user/collect/create
 AS_MESSAGE( user_collect_create );

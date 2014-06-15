@@ -36,6 +36,7 @@
 #import "GoodsSpecifyBoard_iPhone.h"
 #import "ShareBoard_iPhone.h"
 #import "Placeholder.h"
+#import "UMSocial.h"
 
 @implementation GoodsDetailTab_iPhone
 
@@ -428,13 +429,20 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     }
     else if ( [signal is:BeeUINavigationBar.RIGHT_TOUCHED] )
     {
-		BeeUIActionSheet * sheet = [BeeUIActionSheet spawn];
-		[sheet addButtonTitle:__TEXT(@"share_sina") signal:ShareBoard_iPhone.SHARE_TO_SINA];
-		[sheet addButtonTitle:__TEXT(@"share_tencent") signal:ShareBoard_iPhone.SHARE_TO_TENCENT];
-        [sheet addButtonTitle:__TEXT(@"share_weixin") signal:ShareBoard_iPhone.SHARE_TO_WEIXIN_FRIEND];
-        [sheet addButtonTitle:__TEXT(@"share_weixin_timeline") signal:ShareBoard_iPhone.SHARE_TO_WEIXIN_TIMELINE];
-		[sheet addCancelTitle:__TEXT(@"button_cancel")];
-		[sheet showInViewController:self];
+//		BeeUIActionSheet * sheet = [BeeUIActionSheet spawn];
+//		[sheet addButtonTitle:__TEXT(@"share_sina") signal:ShareBoard_iPhone.SHARE_TO_SINA];
+//		[sheet addButtonTitle:__TEXT(@"share_tencent") signal:ShareBoard_iPhone.SHARE_TO_TENCENT];
+//        [sheet addButtonTitle:__TEXT(@"share_weixin") signal:ShareBoard_iPhone.SHARE_TO_WEIXIN_FRIEND];
+//        [sheet addButtonTitle:__TEXT(@"share_weixin_timeline") signal:ShareBoard_iPhone.SHARE_TO_WEIXIN_TIMELINE];
+//		[sheet addCancelTitle:__TEXT(@"button_cancel")];
+//		[sheet showInViewController:self];
+        
+        [UMSocialSnsService presentSnsIconSheetView:self
+                                             appKey:@"539d342956240bc0a8008e6b"
+                                          shareText: self.goodsModel.goods.goods_name
+                                         shareImage:[UIImage imageNamed:@"icon.png"]
+                                    shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToRenren,nil]
+                                           delegate:nil];
     }
 }
 

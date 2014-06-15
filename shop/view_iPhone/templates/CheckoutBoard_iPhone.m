@@ -43,6 +43,7 @@
 #import "DataVerifier.h"
 #import "AlixPayOrder.h"
 #import "AlixLibService.h"
+#import "PayResultModel.h"
 
 
 #pragma mark -
@@ -369,6 +370,10 @@ DEF_SIGNAL( ACTION_BACK )
     
     self.orderModel = [[[OrderModel alloc] init] autorelease];
     [self.orderModel addObserver:self];
+    
+    
+    [[PayResultModel sharedInstance]addObserver:self];
+    
 }
 
 - (void)unload
@@ -380,6 +385,8 @@ DEF_SIGNAL( ACTION_BACK )
     self.flowModel = nil;
     
     [self.orderModel removeObserver:self];
+    
+    [[PayResultModel sharedInstance]addObserver:self];
 
 	[super unload];
 }
@@ -503,16 +510,26 @@ ON_SIGNAL2( CheckoutBoard_iPhone , signal )
             
 			if ([verifier verifyString:result.resultString withSign:result.signString])
             {
+                NSArray *tempArray = [self.orderModel.html componentsSeparatedByString:@"$"];
                 //验证签名成功，交易结果无篡改
+                [[PayResultModel sharedInstance]updatewithorder_sn:[tempArray objectAtIndex:0]];
+                 [[AppBoard_iPhone sharedInstance] presentSuccessTips:@"支付成功"];
+                [[AppBoard_iPhone sharedInstance]showUserView];
+                
 			}
         }
         else
         {
+            [[AppBoard_iPhone sharedInstance] presentSuccessTips:@"支付失败，请刷新后重试"];
             //交易失败
+            [[AppBoard_iPhone sharedInstance]showUserView];
         }
     }
     else
     {
+        [[AppBoard_iPhone sharedInstance] presentSuccessTips:@"支付失败，请刷新后重试"];
+        //交易失败
+        [[AppBoard_iPhone sharedInstance]showUserView];
         //失败
     }
     

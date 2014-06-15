@@ -33,6 +33,7 @@
 
 #import "Bee_UIApplication.h"
 #import "Bee_UIRouter.h"
+#import "UMSocial.h"
 
 #pragma mark -
 
@@ -200,6 +201,7 @@ static BeeUIApplication * __sharedApp = nil;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [UMSocialData setAppKey:@"539d342956240bc0a8008e6b"];
 	__sharedApp = self;
 
 	[self initWindow];

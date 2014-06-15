@@ -74,8 +74,9 @@
 
 - (void)fetchFromServer
 {
-	self.CANCEL_MSG( API.shopHelp );
-	self.MSG( API.shopHelp );
+    //new add
+//	self.CANCEL_MSG( API.shopHelp );
+//	self.MSG( API.shopHelp );
 }
 
 #pragma mark -

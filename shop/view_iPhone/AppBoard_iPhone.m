@@ -297,6 +297,13 @@ ON_NOTIFICATION3( ConfigModel, SHOP_OPENED, notification )
     }
 }
 
+- (void)showUserView
+{
+    [self.tabbar selectUser];
+    
+    [[BeeUIRouter sharedInstance] open:self.TAB_USER animated:YES];
+}
+
 #pragma mark -
 
 - (void)handleNotification:(NSNotification *)notification

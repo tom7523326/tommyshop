@@ -428,6 +428,7 @@ CONVERT_PROPERTY_CLASS( goods_list, ORDER_GOODS );
 @synthesize rank_name = _rank_name;
 @synthesize rank_level = _rank_level;
 @synthesize score_num = _score_num;
+@synthesize recommend_num = _recommend_num;
 
 @end
 
@@ -1826,6 +1827,58 @@ DEF_MESSAGE_( region, msg )
 	}
 }
 
+
+
+
+DEF_MESSAGE_( recommendUsers, msg )
+{
+	if ( msg.sending )
+	{
+		NSNumber * parent_id = msg.GET_INPUT( @"parent_id" );
+        
+		if ( nil == parent_id || NO == [parent_id isKindOfClass:[NSNumber class]] )
+		{
+			msg.failed = YES;
+			return;
+		}
+        
+		NSMutableDictionary * requestBody = [NSMutableDictionary dictionary];
+		requestBody.APPEND( @"parent_id", parent_id );
+        
+        //		NSString * requestURI = @"http://shop.ecmobile.me/ecmobile/?url=region";
+		NSString * requestURI = [NSString stringWithFormat:@"%@user/recommendUsers.php", [ServerConfig sharedInstance].url];
+		
+        
+        NSLog(@"requestBody.objectToString is %@",requestBody.objectToString);
+        
+		msg.HTTP_POST( requestURI ).PARAM( @"json", requestBody.objectToString );
+	}
+	else if ( msg.succeed )
+	{
+		NSDictionary * response = msg.responseJSONDictionary;
+		STATUS * status = [STATUS objectFromDictionary:[response dictAtPath:@"status"]];
+		NSArray * data = [REGION objectsFromArray:[response arrayAtPath:@"data.users"]];
+        //        for(int i = 0;i<[response arrayAtPath:@"data.regions"].count;i++)
+        //        {
+        //            NSLog(@"ooooooooooooo %@",[[[response arrayAtPath:@"data.regions"]objectAtIndex:i] objectForKey:@"name"]);
+        //        }
+		if ( nil == status || NO == [status isKindOfClass:[STATUS class]] )
+		{
+			msg.failed = YES;
+			return;
+		}
+        
+		msg.OUTPUT( @"status", status );
+		msg.OUTPUT( @"data", data );
+        
+	}
+	else if ( msg.failed )
+	{
+	}
+	else if ( msg.cancelled )
+	{
+	}
+}
 #pragma mark - POST search
 
 DEF_MESSAGE_( search, msg )
@@ -2238,6 +2291,59 @@ DEF_MESSAGE_( changerecord, msg )
         
         //		NSString * requestURI = @"http://shop.ecmobile.me/ecmobile/?url=user/signin";
 		NSString * requestURI = [NSString stringWithFormat:@"%@user/account.php", [ServerConfig sharedInstance].url];
+        NSLog(@"requestBody.objectToString is %@ url %@",requestBody.objectToString,requestURI);
+		
+        
+		msg.HTTP_POST( requestURI ).PARAM( @"json",requestBody.objectToString);
+        
+        
+	}
+	else if ( msg.succeed )
+	{
+		NSDictionary * response = msg.responseJSONDictionary;
+		STATUS * status = [STATUS objectFromDictionary:[response dictAtPath:@"status"]];
+		NSString * data = [response stringAtPath:@"data"];
+        
+		if ( nil == status || NO == [status isKindOfClass:[STATUS class]] )
+		{
+			msg.failed = YES;
+			return;
+		}
+        
+		msg.OUTPUT( @"status", status );
+		msg.OUTPUT( @"data", data );
+        
+	}
+	else if ( msg.failed )
+	{
+        
+	}
+	else if ( msg.cancelled )
+	{
+        
+	}
+}
+#pragma mark - POST order/affirmPaid.php
+
+DEF_MESSAGE_( affirmPaid, msg )
+{
+	if ( msg.sending )
+	{
+		NSString * name = msg.GET_INPUT( @"order_sn" );
+        SESSION * session = msg.GET_INPUT( @"session" );
+        
+		if ( nil == name || NO == [name isKindOfClass:[NSString class]] )
+		{
+			msg.failed = YES;
+			return;
+		}
+        
+		NSMutableDictionary * requestBody = [NSMutableDictionary dictionary];
+        requestBody.APPEND(@"session",session);
+		requestBody.APPEND( @"order_sn", name );
+        
+        //		NSString * requestURI = @"http://shop.ecmobile.me/ecmobile/?url=user/signin";
+		NSString * requestURI = [NSString stringWithFormat:@"%@order/affirmPaid.php", [ServerConfig sharedInstance].url];
         NSLog(@"requestBody.objectToString is %@ url %@",requestBody.objectToString,requestURI);
 		
         
