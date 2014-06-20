@@ -58,10 +58,12 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	
 	if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
 	{
-        self.titleString = __TEXT(@"select_address");
+        
         [self showNavigationBarAnimated:NO];
         [self hideBarButton:BeeUINavigationBar.RIGHT];
         [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
+        
+         self.title = [NSString stringWithFormat:@"第%d级",[RecommendUsersModel sharedInstance].level];
     }
 	else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
 	{
@@ -201,7 +203,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
         [self dismissTips];
     }
     
-    if ( [msg is:API.region] )
+    if ( [msg is:API.recommendUsers] )
     {
         if ( msg.succeed )
         {
@@ -210,13 +212,15 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
                 RecomendPickBoar_iPhone * board = [[[RecomendPickBoar_iPhone alloc] init] autorelease];
                 board.rootBoard = self.rootBoard;
                 board.regions = self.recommendUsersModel.regions;
+                [RecommendUsersModel sharedInstance].level++;
+               
                 
                 [self.stack pushBoard:board animated:YES];
             }
             else
             {
-                [[RegionModel sharedInstance] setRegionFromAddress:[RegionModel sharedInstance].tempAddress];
-                [RegionModel sharedInstance].level = 0;
+                [[RecommendUsersModel sharedInstance] setRegionFromAddress:[RecommendUsersModel sharedInstance].tempAddress];
+                [RecommendUsersModel sharedInstance].level = 0;
                 [self.stack popToBoard:self.rootBoard animated:YES];
             }
         }

@@ -64,7 +64,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	
 	if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
 	{
-        self.titleString = __TEXT(@"member_signin");
+        self.titleString = @"积分提现";
         //		[self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
 	}
 	else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
@@ -152,9 +152,9 @@ ON_SIGNAL3( ChangeRecord_iPhone, signup, signal )
 		return;
     }
 	
-	if ( 0 == userName.length || NO == [userName isChineseUserName] )
+	if ( 0 == userName.length  )
 	{
-		[self presentMessageTips:@"积分不是纯数字请重新输入"];
+		[self presentMessageTips:@"请输入您要兑换的积分"];
 		return;
 	}
     

@@ -47,7 +47,7 @@
 <string name="manage_addressdetail">地址:南京市江宁区将军大道世界之窗H座2楼</string>
 <string name="manage_help_detail">一、商品展示</string>
 <string name="manage_help_detail1"> 打开APP即可看到当前店铺正在销售的</string>
-<string name="manage_help_detail2"> 各类茶叶。特价、热销，各种惊喜哦。</string>
+<string name="manage_help_detail2"> 各类健康产品。特价、热销，惊喜哦。</string>
 <string name="manage_help_detail3"> 点击商品可以查看商品详情。</string>
 <string name="manage_help_detail4">二、商品搜索</string>
 <string name="manage_help_detail5"> 提供产品名称搜索和分类检索，让您快</string>
@@ -56,8 +56,9 @@
 <string name="manage_help_detail8"> 方便您查看已经选购的商品，您可以选</string>
 <string name="manage_help_detail9"> 择其中需要购买的进行结算。</string>
 <string name="manage_help_detail10">四、个人中心</string>
-<string name="manage_help_detail11"> 管理个人信息，订单信息，提供随时随</string>
-<string name="manage_help_detail12"> 地查询服务，以及对于本软件的设置。</string>
+<string name="manage_help_detail11">管理个人信息，积分信息，积分提现（限</string>
+<string name="manage_help_detail12">周五）,推荐会员信息，订单信息，提供</string>
+<string name="manage_help_detail13">随时随地查询服务，以及对软件的设置。</string>
 <string name="manage2_over">完成</string>
 <string name="manage2_name">收货人姓名</string>
 <string name="manage2_tel">电话号码</string>

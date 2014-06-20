@@ -83,14 +83,14 @@ DEF_SIGNAL( SIGN_OUT )
     FormElement *help13 =[[FormElement cell] retain];
     help13.title = __TEXT(@"manage_help_detail12");
     FormElement *help14 =[[FormElement cell] retain];
-    help14.title = __TEXT(@"manage_help_detail113");
+    help14.title = __TEXT(@"manage_help_detail13");
     
     
     
     NSArray *group2 =@[help2,help3,help4,];
     NSArray *group3 =@[help6,help7];
     NSArray *group4 =@[help9,help10];
-    NSArray *group6 =@[help12,help13];
+    NSArray *group6 =@[help12,help13,help14];
     
     
     

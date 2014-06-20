@@ -472,7 +472,7 @@ ON_SIGNAL3( ProfileCell_iPhone, phone, signal )
 //			[[AppBoard_iPhone sharedInstance] showLogin];
 //			return;
 //		}
-        NSString *number = @"025-83696733";// 此处读入电话号码
+        NSString *number = @"025-52103211";// 此处读入电话号码
         // NSString *num = [[NSString alloc]initWithFormat:@"tel://%@",number]; //number为号码字符串 如果使用这个方法结束电话之后会进入联系人列表
         
         NSString *num = [[NSString alloc]initWithFormat:@"telprompt://%@",number]; //而这个方法则打电话前先弹框 是否打电话 然后打完电话之后回到程序中 网上说这个方法可能不合法 无法通过审核
@@ -693,6 +693,7 @@ ON_NOTIFICATION3( UserModel, UPDATED, notification )
                 RecomendPickBoar_iPhone * board = [[[RecomendPickBoar_iPhone alloc] init] autorelease];
                 board.rootBoard = self;
                 board.regions = [RecommendUsersModel sharedInstance].regions;
+                [RecommendUsersModel sharedInstance].level = 1;
                 [self.stack pushBoard:board animated:YES];
             }
 		}
