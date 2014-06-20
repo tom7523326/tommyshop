@@ -207,7 +207,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     {
         if ( msg.succeed )
         {
-            if ( self.recommendUsersModel.regions.count )
+            if ( self.recommendUsersModel.regions.count && [RecommendUsersModel sharedInstance].level != 12)
             {
                 RecomendPickBoar_iPhone * board = [[[RecomendPickBoar_iPhone alloc] init] autorelease];
                 board.rootBoard = self.rootBoard;

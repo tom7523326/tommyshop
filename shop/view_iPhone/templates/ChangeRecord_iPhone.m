@@ -49,11 +49,13 @@ DEF_SINGLETON( ChangeRecord_iPhone )
 - (void)load
 {
 	[[ChangeRecordModel sharedInstance] addObserver:self];
+    [super load];
 }
 
 - (void)unload
 {
 	[[ChangeRecordModel sharedInstance] removeObserver:self];
+    [super unload];
 }
 
 #pragma mark -
@@ -66,6 +68,17 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	{
         self.titleString = @"积分提现";
         //		[self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
+        
+        [self showNavigationBarAnimated:NO];
+        [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
+        
+		_scroll = [[BeeUIScrollView alloc] init];
+		_scroll.dataSource = self;
+        [_scroll showHeaderLoader:YES animated:NO];
+		[_scroll showFooterLoader:YES animated:NO];
+		[_scroll setBaseInsets:UIEdgeInsetsMake( 10, 0, 10, 0 )];
+		[self.view addSubview:_scroll];
+
 	}
 	else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
 	{
@@ -81,7 +94,10 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.WILL_APPEAR] )
     {
-        [self showNavigationBarAnimated:NO];
+        
+		[_scroll asyncReloadData];
+		
+		[[AppBoard_iPhone sharedInstance] setTabbarHidden:YES];
     }
     else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
     {
@@ -92,14 +108,13 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 {
 	[super handleUISignal:signal];
     
-	if ( [signal is:BeeUINavigationBar.LEFT_TOUCHED] )
-	{
-		[[AppBoard_iPhone sharedInstance] hideLogin];
-	}
-	else if ( [signal is:BeeUINavigationBar.RIGHT_TOUCHED] )
-	{
-		[self doLogin];
-	}
+    if ( [signal is:BeeUINavigationBar.LEFT_TOUCHED] )
+    {
+        [self.stack popBoardAnimated:YES];
+    }
+    else if ( [signal is:BeeUINavigationBar.RIGHT_TOUCHED] )
+    {
+    }
 }
 
 ON_SIGNAL2( BeeUITextField, signal )
