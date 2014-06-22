@@ -431,7 +431,7 @@ ON_SIGNAL2( AwaitPayCell_iPhone, signal )
 	order.productName = @"111111"; //商品标题
 	order.productDescription = @"111111"; //商品描述
 	order.amount = [tempArray objectAtIndex:1]; //商品价格
-	order.notifyURL =  @"http%3A%2F%2Fwwww.xxx.com"; //回调URL
+	order.notifyURL =  @"ecshop://"; //回调URL
 	
 	return [order description];
 }

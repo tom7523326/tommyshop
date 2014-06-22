@@ -374,6 +374,17 @@ DEF_SIGNAL( ACTION_BACK )
     
     [[PayResultModel sharedInstance]addObserver:self];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(handleResult) name:@"handleResult" object:nil];
+    
+}
+
+-(void)handleResult
+{
+    NSArray *tempArray = [self.orderModel.html componentsSeparatedByString:@"$"];
+    //验证签名成功，交易结果无篡改
+    [[PayResultModel sharedInstance]updatewithorder_sn:[tempArray objectAtIndex:0]];
+    [[AppBoard_iPhone sharedInstance] presentSuccessTips:@"支付成功"];
+    [[AppBoard_iPhone sharedInstance]showUserView];	
 }
 
 - (void)unload
@@ -545,10 +556,10 @@ ON_SIGNAL2( CheckoutBoard_iPhone , signal )
     NSArray *tempArray = [self.orderModel.html componentsSeparatedByString:@"$"];
     
     order.tradeNO = [tempArray objectAtIndex:0]; //订单ID（由商家自行制定）
-	order.productName = @"111111"; //商品标题
+	order.productName = [tempArray objectAtIndex:1];; //商品标题
 	order.productDescription = @"111111"; //商品描述
 	order.amount = [tempArray objectAtIndex:1]; //商品价格
-	order.notifyURL =  @"http%3A%2F%2Fwwww.xxx.com"; //回调URL
+	order.notifyURL =  @"ecshop://toomy"; //回调URL
 	
 	return [order description];
 }

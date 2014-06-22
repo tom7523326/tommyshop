@@ -76,11 +76,15 @@ SUPPORT_RESOURCE_LOADING( YES )
 		{
 			$(@"#fav-count").TEXT( [NSString stringWithFormat:@"%@%@", userModel.user.collection_num, __TEXT(@"no_of_items")] );
 		}
-        if(userModel.user.score_num.intValue > 0)
+        if(userModel.user.score_num.intValue)
         {
             $(@"#myscore-count").TEXT( [NSString stringWithFormat:@"%@", userModel.user.score_num] );
 
             
+        }
+        else
+        {
+            $(@"#myscore-count").TEXT( [NSString stringWithFormat:@"%d", 0] );
         }
         
         if(userModel.user.recommend_num.integerValue > 0)

@@ -331,7 +331,7 @@ ON_SIGNAL3( SignupBoard_iPhone, signin, signal )
     }
     if(![self isPureInt:recommend])
     {
-        [self presentMessageTips:@"分享者编号必须为纯数字！"];
+        [self presentMessageTips:@"推荐人编号必须为纯数字！"];
 		return;
     }
 	

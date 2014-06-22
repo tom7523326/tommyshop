@@ -34,6 +34,10 @@
 #import "Bee_UIApplication.h"
 #import "Bee_UIRouter.h"
 #import "UMSocial.h"
+#import "AlixPayResult.h"
+#import "DataVerifier.h"
+#import "PartnerConfig.h"
+
 
 #pragma mark -
 
@@ -295,8 +299,68 @@ static BeeUIApplication * __sharedApp = nil;
 // Will be deprecated at some point, please replace with application:openURL:sourceApplication:annotation:
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-	return [self application:application openURL:url sourceApplication:nil annotation:nil];
+    [self parse:url application:application];
+//	return [self application:application openURL:url sourceApplication:nil annotation:nil];
+    return YES;
 }
+- (void)parse:(NSURL *)url application:(UIApplication *)application {
+    
+    //结果处理
+    AlixPayResult* result = [self handleOpenURL:url];
+    
+	if (result)
+    {
+		
+		if (result.statusCode == 9000)
+        {
+			/*
+			 *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
+			 */
+            
+            //交易成功
+                        NSString* key = @"签约帐户后获取到的支付宝公钥";
+            			id<DataVerifier> verifier;
+                        verifier = CreateRSADataVerifier(key);
+            
+            			if ([verifier verifyString:result.resultString withSign:result.signString])
+                     {
+                         
+                         [[NSNotificationCenter defaultCenter]postNotificationName:@"handleResult" object:nil];
+                     }
+
+            
+
+            
+        }
+        else
+        {
+            //交易失败
+        }
+    }
+    else
+    {
+        //失败
+    }
+}
+- (AlixPayResult *)handleOpenURL:(NSURL *)url {
+	AlixPayResult * result = nil;
+	
+	if (url != nil && [[url host] compare:@"safepay"] == 0) {
+		result = [self resultFromURL:url];
+	}
+    
+	return result;
+}
+
+- (AlixPayResult *)resultFromURL:(NSURL *)url {
+	NSString * query = [[url query] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+#if ! __has_feature(objc_arc)
+    return [[[AlixPayResult alloc] initWithString:query] autorelease];
+#else
+	return [[AlixPayResult alloc] initWithString:query];
+#endif
+}
+
 
 // no equiv. notification. return NO if the application can't open for some reason
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
@@ -316,6 +380,8 @@ static BeeUIApplication * __sharedApp = nil;
 
 	return YES;
 }
+
+
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
