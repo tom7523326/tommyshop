@@ -37,7 +37,7 @@
 #import "ShareBoard_iPhone.h"
 #import "Placeholder.h"
 #import "UMSocial.h"
-
+#import "UserModel.h"
 @implementation GoodsDetailTab_iPhone
 
 SUPPORT_RESOURCE_LOADING( YES )
@@ -436,10 +436,9 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 //        [sheet addButtonTitle:__TEXT(@"share_weixin_timeline") signal:ShareBoard_iPhone.SHARE_TO_WEIXIN_TIMELINE];
 //		[sheet addCancelTitle:__TEXT(@"button_cancel")];
 //		[sheet showInViewController:self];
-        
         [UMSocialSnsService presentSnsIconSheetView:self
                                              appKey:@"539d342956240bc0a8008e6b"
-                                          shareText: self.goodsModel.goods.goods_name
+                                          shareText:[NSString stringWithFormat:@"博仕达农科健康产品回馈新老用户，五折让利疯抢正式开启%@绿色好产品，安徽博仕达农科健康产品，新用户反积分，老用户得半价！机不可失，赶快来抢吧~ 我的推荐号是%d，注册时填入我的推荐号哦~ http://mall.ahbsdny.com/client.html", self.goodsModel.goods.goods_name,[UserModel sharedInstance].user.id.intValue]
                                          shareImage:[UIImage imageNamed:@"icon.png"]
                                     shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToRenren,nil]
                                            delegate:nil];
