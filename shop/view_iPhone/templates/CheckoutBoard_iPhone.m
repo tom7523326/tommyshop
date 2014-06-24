@@ -383,8 +383,9 @@ DEF_SIGNAL( ACTION_BACK )
     NSArray *tempArray = [self.orderModel.html componentsSeparatedByString:@"$"];
     //验证签名成功，交易结果无篡改
     [[PayResultModel sharedInstance]updatewithorder_sn:[tempArray objectAtIndex:0]];
-    [[AppBoard_iPhone sharedInstance] presentSuccessTips:@"支付成功"];
-    [[AppBoard_iPhone sharedInstance]showUserView];	
+   
+    [[AppBoard_iPhone sharedInstance]showUserView];
+   
 }
 
 - (void)unload
@@ -524,23 +525,26 @@ ON_SIGNAL2( CheckoutBoard_iPhone , signal )
                 NSArray *tempArray = [self.orderModel.html componentsSeparatedByString:@"$"];
                 //验证签名成功，交易结果无篡改
                 [[PayResultModel sharedInstance]updatewithorder_sn:[tempArray objectAtIndex:0]];
-                 [[AppBoard_iPhone sharedInstance] presentSuccessTips:@"支付成功"];
+               
                 [[AppBoard_iPhone sharedInstance]showUserView];
+                  [[AppBoard_iPhone sharedInstance] presentSuccessTips:@"支付成功"];
                 
 			}
         }
         else
         {
-            [[AppBoard_iPhone sharedInstance] presentSuccessTips:@"支付失败，请刷新后重试"];
+            
             //交易失败
             [[AppBoard_iPhone sharedInstance]showUserView];
+            [[AppBoard_iPhone sharedInstance] presentSuccessTips:@"支付失败，请刷新后重试"];
         }
     }
     else
     {
-        [[AppBoard_iPhone sharedInstance] presentSuccessTips:@"支付失败，请刷新后重试"];
+      
         //交易失败
         [[AppBoard_iPhone sharedInstance]showUserView];
+          [[AppBoard_iPhone sharedInstance] presentSuccessTips:@"支付失败，请刷新后重试"];
         //失败
     }
     
@@ -550,13 +554,15 @@ ON_SIGNAL2( CheckoutBoard_iPhone , signal )
     /*
 	 *点击获取prodcut实例并初始化订单信息
 	 */
-    AlixPayOrder *order = [[AlixPayOrder alloc] init];
+    
+        AlixPayOrder *order = [[AlixPayOrder alloc] init];
     order.partner = PartnerID;
     order.seller = SellerID;
     NSArray *tempArray = [self.orderModel.html componentsSeparatedByString:@"$"];
     
     order.tradeNO = [tempArray objectAtIndex:0]; //订单ID（由商家自行制定）
-	order.productName = [tempArray objectAtIndex:1];; //商品标题
+	order.productName = ((GOODS*)[self.flowModel.goods_list objectAtIndex:0]).goods_name;
+; //商品标题
 	order.productDescription = @"111111"; //商品描述
 	order.amount = [tempArray objectAtIndex:1]; //商品价格
 	order.notifyURL =  @"ecshop://toomy"; //回调URL
@@ -764,9 +770,8 @@ ON_SIGNAL3( BeeUIPickerView, CONFIRMED, signal )
     {
         if ( msg.succeed )
         {
-            NSString*tempString =  self.orderModel.html;
             
-            NSString *appScheme = @"AlipaySdkDemo";
+            NSString *appScheme = @"ecshop";
             NSString* orderInfo = [self getOrderInfo:1];
             NSString* signedStr = [self doRsa:orderInfo];
             

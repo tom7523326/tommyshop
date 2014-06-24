@@ -318,15 +318,15 @@ static BeeUIApplication * __sharedApp = nil;
 			 */
             
             //交易成功
-                        NSString* key = @"签约帐户后获取到的支付宝公钥";
-            			id<DataVerifier> verifier;
-                        verifier = CreateRSADataVerifier(key);
+//                        NSString* key = @"签约帐户后获取到的支付宝公钥";
+//            			id<DataVerifier> verifier;
+//                        verifier = CreateRSADataVerifier(key);
+//            
+//            			if ([verifier verifyString:result.resultString withSign:result.signString])
+//                     {
             
-            			if ([verifier verifyString:result.resultString withSign:result.signString])
-                     {
-                         
                          [[NSNotificationCenter defaultCenter]postNotificationName:@"handleResult" object:nil];
-                     }
+//                     }
 
             
 
@@ -365,6 +365,8 @@ static BeeUIApplication * __sharedApp = nil;
 // no equiv. notification. return NO if the application can't open for some reason
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
+    
+    [self parse:url application:application];
 	if ( url || sourceApplication )
 	{
 		NSMutableDictionary * params = [NSMutableDictionary dictionary];
