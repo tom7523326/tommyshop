@@ -1576,7 +1576,6 @@ DEF_MESSAGE_( order_cancel, msg )
 	{
 		NSNumber * order_id = msg.GET_INPUT( @"order_id" );
 		SESSION * session = msg.GET_INPUT( @"session" );
-
 		if ( nil == order_id || NO == [order_id isKindOfClass:[NSNumber class]] )
 		{
 			msg.failed = YES;

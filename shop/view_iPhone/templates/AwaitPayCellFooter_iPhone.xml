@@ -39,10 +39,10 @@
         </linear>
         
         <linear orientation="h" class="button-wrapper">
-            <button id="cancel" class="button-narrow-gray">@{balance_cancel}</button>
+            <!--<button id="cancel" class="button-narrow-gray">@{balance_cancel}</button> -->
             <button id="pay" class="button-narrow-red">@{pay}</button>
         </linear>
-        
+
     </linear>
     
     <style type="text/css">
