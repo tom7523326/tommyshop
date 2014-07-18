@@ -329,7 +329,7 @@ ON_SIGNAL3( SignupBoard_iPhone, signin, signal )
             [fields addObject:fieldValue];
         }
     }
-    if(![self isPureInt:recommend])
+    if(![self isPureInt:recommend]&& (0 !=recommend))
     {
         [self presentMessageTips:@"推荐人编号必须为纯数字！"];
 		return;
@@ -418,11 +418,19 @@ ON_SIGNAL3( SignupBoard_iPhone, signin, signal )
 		}
 		else if ( msg.failed )
 		{
-			[ErrorMsg presentErrorMsg:msg inBoard:self];
+            STATUS * status = msg.GET_OUTPUT( @"status" );
+			if ( NO == status.succeed.boolValue )
+			{
+				msg.errorCode = status.error_code.intValue;
+				msg.errorDesc = status.error_desc;
+				msg.failed = YES;
+                [self presentFailureTips:msg.errorDesc];
+            };
 		}
 	}
 }
 - (BOOL)isPureInt:(NSString*)string{
+
     NSScanner* scan = [NSScanner scannerWithString:string];
     int val;
     return[scan scanInt:&val] && [scan isAtEnd];

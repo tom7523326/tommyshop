@@ -2450,6 +2450,8 @@ DEF_MESSAGE_( user_signup, msg )
 	{
         NSDictionary * response = msg.responseJSONDictionary;
         NSLog(@"response string is %@",response);
+        STATUS * status = [STATUS objectFromDictionary:[response dictAtPath:@"status"]];
+        msg.OUTPUT( @"status", status );
 	}
 	else if ( msg.cancelled )
 	{
